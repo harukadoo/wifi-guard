@@ -1,4 +1,3 @@
-import os
 import time
 from dotenv import dotenv_values
 from selenium import webdriver
@@ -60,16 +59,15 @@ class RouterBot:
 
             is_wifi_on = (aria_status == "true")
 
-            if turn_on and not is_wifi_on:
-                print("turn off wifi")
+            if turn_on != is_wifi_on:
+                action = "ENABLING" if turn_on else "DISABLING"
+                print(f"{action} Wi-Fi")
+
                 wifi_toggle_btn.click()
-                
-            elif not turn_on and is_wifi_on:
-                print("turn off wifi")
-                wifi_toggle_btn.click()
+                time.sleep(5)
                 
             else:
-                print(f"No changes needed. Target: {turn_on}, Actual: {is_wifi_on}")
+                print(f"No changes needed")
 
         except Exception as e:
             print(f"wifi state error: {e}")
