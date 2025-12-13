@@ -76,4 +76,4 @@ if __name__ == "__main__":
     bot = RouterBot()
 
     bot.set_wifi_state()
-    time.sleep(1000)
+    time.sleep(100)
